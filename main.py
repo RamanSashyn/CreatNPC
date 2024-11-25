@@ -1,9 +1,10 @@
 import file_operations
 from faker import Faker
 
+fake_name = Faker("ru_RU")
+print(fake_name.name())
 name_npc = {
-    "first_name": "Артем",
-    "last_name": "Литвич"
+    "first_name": fake_name.first_name(),
+    "last_name": fake_name.last_name(),
 }
 
-file_operations.render_template("charsheet.svg", "result.svg", name_npc)
