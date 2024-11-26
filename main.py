@@ -4,7 +4,7 @@ import random
 
 fake_info = Faker("ru_RU")
 
-skills = ["Стремительный прыжок",
+skills_list = ["Стремительный прыжок",
           "Электрический выстрел",
           "Ледяной удар",
           "Стремительный удар",
@@ -12,7 +12,8 @@ skills = ["Стремительный прыжок",
           "Тайный побег",
           "Ледяной выстрел",
           "Огненный заряд"]
-
+updated_skills_list = [skill_name.replace("е", "е͠") for skill_name in skills_list]
+selected_skills = random.sample(updated_skills_list, 3)
 npc_info = {
     "first_name": fake_info.first_name(),
     "last_name": fake_info.last_name(),
@@ -23,9 +24,9 @@ npc_info = {
     "endurance": random.randint(3, 18),
     "intelligence": random.randint(3, 18),
     "luck": random.randint(3, 18),
-    "skill_1": random.choice(skills),
-    "skill_2": random.choice(skills),
-    "skill_3": random.choice(skills),
+    "skill_1": selected_skills[0],
+    "skill_2": selected_skills[1],
+    "skill_3": selected_skills[2],
 }
 
 file_operations.render_template("template/charsheet.svg", "results/result.svg", npc_info)
