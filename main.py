@@ -89,7 +89,7 @@ RUNIC_ALPHABET = {
 
 OUTPUT_DIR = "results"
 TEMPLATE_PATH = "template/charsheet.svg"
-RESULT_FILE_NAME = "result_{0}.svg"
+result_file_template = "result_{0}.svg"
 
 
 def update_skills(skills_list, runic_alphabet):
@@ -131,7 +131,7 @@ def main():
 
     for card_id in range(1, 11):
         npc_info = generate_npc(fake_info, updated_skills)
-        file_name = os.path.join(OUTPUT_DIR, RESULT_FILE_NAME.format(card_id))
+        file_name = os.path.join(OUTPUT_DIR, result_file_template.format(card_id))
         file_operations.render_template(TEMPLATE_PATH, file_name, npc_info)
 
 
